@@ -16,19 +16,15 @@ class Boot {
 
 		LiftRules.addToPackages("$package$")
 
-		val entries = List(
-			Menu.i("Home") / "index",
-
-			Menu(Loc("Static", Link(List("static"), true, "/static/index"),
-				"Static Content"))
-		)
+		val entries = List( Menu.i("Home") / "index" )
 
 		LiftRules.setSiteMap(SiteMap(entries:_*))
 
 		LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
 
-		LiftRules.htmlProperties.default.set((r: Req) =>
-		new Html5Properties(r.userAgent))
+		LiftRules.htmlProperties.default.set( (r: Req) =>
+			new Html5Properties(r.userAgent)
+		)
 
 		LiftRules.jsArtifacts = JQueryArtifacts
 		JQueryModule.InitParam.JQuery=JQueryModule.JQuery172

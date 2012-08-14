@@ -1,4 +1,4 @@
-package com.code.snippet
+package $package$.snippet
 
 import net.liftweb.http.{S, SHtml}
 import net.liftweb.http.js.JsCmds
