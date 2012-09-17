@@ -8,15 +8,14 @@ import common._
 import http._
 import sitemap._
 import Loc._
-import net.liftmodules.JQueryModule
-import net.liftweb.http.js.jquery._
 
 class Boot {
   def boot {
 
-		LiftRules.addToPackages("$package$")
-
-		val entries = List( Menu.i("Home") / "index" )
+		val entries = List( 
+			Menu.i("Home") / "index", 
+			Menu.i("About") / "extra" / "about"
+		)
 
 		LiftRules.setSiteMap(SiteMap(entries:_*))
 
@@ -26,8 +25,6 @@ class Boot {
 			new Html5Properties(r.userAgent)
 		)
 
-		LiftRules.jsArtifacts = JQueryArtifacts
-		JQueryModule.InitParam.JQuery=JQueryModule.JQuery172
-		JQueryModule.init()
+		LiftRules.autoIncludeAjax = session => false
 	}
 }
